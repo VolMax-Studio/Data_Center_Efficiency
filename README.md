@@ -89,7 +89,8 @@ python make_figs.py
 
 ---
 
-## 📚 Critical Ograda & Limitations (Stage 5)
+## 📚 Critical Caveats & Limitations (Stage 5)
+
 
 1. **Ruby Certification Status (UNVERIFIED):** The 80 PLUS Ruby certification tier was introduced recently (January 2025/late-stage draft). Because secondary sources report conflicting dates and peak limits, all Ruby numbers in this repository are flagged with `[UNVERIFIED - Ruby]` flags until Delta/CLEAResult publish the official test models.
 2. **Measurement Boundary Dependency:** The PUE loophole is purely an artifact of measuring IT power at the AC input. If the operator measures IT power at the DC output of the PSU (direct chip consumption), the PSU loss moves to the numerator, and the loophole disappears (PUE drop is correctly displayed).
