@@ -1,0 +1,356 @@
+{
+  "d_0.6": {
+    "assumptions": {
+      "profile": "bsp",
+      "bsp_d": 0.6,
+      "bsp_load_compute": 0.98,
+      "bsp_load_comm": 0.4,
+      "cooling": "liquid",
+      "pue_boundary": "ac",
+      "rack_it_kw": 100.0,
+      "hours_per_year": 8760.0,
+      "price_eur_per_kwh": 0.15,
+      "eff_source": "threshold"
+    },
+    "cooling_cop_range": [
+      4.5,
+      6.0
+    ],
+    "tiers": {
+      "gold": {
+        "profile_weighted_efficiency": 0.9082,
+        "p_in_kw": 110.107,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 10.107,
+        "cooling_kw_range": [
+          18.351,
+          24.468
+        ],
+        "total_facility_kw_range": [
+          128.458,
+          134.576
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 110.107
+      },
+      "titanium": {
+        "profile_weighted_efficiency": 0.9205,
+        "p_in_kw": 108.632,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 8.632,
+        "cooling_kw_range": [
+          18.105,
+          24.14
+        ],
+        "total_facility_kw_range": [
+          126.738,
+          132.773
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 108.632
+      },
+      "ruby": {
+        "profile_weighted_efficiency": 0.9297,
+        "p_in_kw": 107.56,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 7.56,
+        "cooling_kw_range": [
+          17.927,
+          23.902
+        ],
+        "total_facility_kw_range": [
+          125.487,
+          131.462
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 107.56
+      }
+    },
+    "savings_vs_gold": {
+      "titanium": {
+        "psu_heat_reduction_kw": 1.475,
+        "cooling_reduction_kw_range": [
+          0.246,
+          0.328
+        ],
+        "total_power_saving_kw_range": [
+          1.721,
+          1.803
+        ],
+        "annual_energy_saving_mwh_range": [
+          15.08,
+          15.79
+        ],
+        "annual_cost_saving_eur_range": [
+          2261.0,
+          2369.0
+        ]
+      },
+      "ruby": {
+        "psu_heat_reduction_kw": 2.547,
+        "cooling_reduction_kw_range": [
+          0.424,
+          0.566
+        ],
+        "total_power_saving_kw_range": [
+          2.971,
+          3.113
+        ],
+        "annual_energy_saving_mwh_range": [
+          26.03,
+          27.27
+        ],
+        "annual_cost_saving_eur_range": [
+          3904.0,
+          4090.0
+        ]
+      }
+    },
+    "pue_blind_spot_note": "Under the AC measurement boundary, PSU loss sits in the IT-power denominator, so improving PSU efficiency can leave nominal PUE flat or even raise it while true facility energy falls. Report both nominal and DC-boundary PUE."
+  },
+  "d_0.8": {
+    "assumptions": {
+      "profile": "bsp",
+      "bsp_d": 0.8,
+      "bsp_load_compute": 0.98,
+      "bsp_load_comm": 0.4,
+      "cooling": "liquid",
+      "pue_boundary": "ac",
+      "rack_it_kw": 100.0,
+      "hours_per_year": 8760.0,
+      "price_eur_per_kwh": 0.15,
+      "eff_source": "threshold"
+    },
+    "cooling_cop_range": [
+      4.5,
+      6.0
+    ],
+    "tiers": {
+      "gold": {
+        "profile_weighted_efficiency": 0.9044,
+        "p_in_kw": 110.565,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 10.565,
+        "cooling_kw_range": [
+          18.427,
+          24.57
+        ],
+        "total_facility_kw_range": [
+          128.992,
+          135.135
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 110.565
+      },
+      "titanium": {
+        "profile_weighted_efficiency": 0.9157,
+        "p_in_kw": 109.209,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 9.209,
+        "cooling_kw_range": [
+          18.201,
+          24.269
+        ],
+        "total_facility_kw_range": [
+          127.41,
+          133.478
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 109.209
+      },
+      "ruby": {
+        "profile_weighted_efficiency": 0.9252,
+        "p_in_kw": 108.084,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 8.084,
+        "cooling_kw_range": [
+          18.014,
+          24.019
+        ],
+        "total_facility_kw_range": [
+          126.098,
+          132.102
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 108.084
+      }
+    },
+    "savings_vs_gold": {
+      "titanium": {
+        "psu_heat_reduction_kw": 1.356,
+        "cooling_reduction_kw_range": [
+          0.226,
+          0.301
+        ],
+        "total_power_saving_kw_range": [
+          1.582,
+          1.657
+        ],
+        "annual_energy_saving_mwh_range": [
+          13.86,
+          14.52
+        ],
+        "annual_cost_saving_eur_range": [
+          2079.0,
+          2177.0
+        ]
+      },
+      "ruby": {
+        "psu_heat_reduction_kw": 2.481,
+        "cooling_reduction_kw_range": [
+          0.413,
+          0.551
+        ],
+        "total_power_saving_kw_range": [
+          2.894,
+          3.032
+        ],
+        "annual_energy_saving_mwh_range": [
+          25.35,
+          26.56
+        ],
+        "annual_cost_saving_eur_range": [
+          3803.0,
+          3984.0
+        ]
+      }
+    },
+    "pue_blind_spot_note": "Under the AC measurement boundary, PSU loss sits in the IT-power denominator, so improving PSU efficiency can leave nominal PUE flat or even raise it while true facility energy falls. Report both nominal and DC-boundary PUE."
+  },
+  "d_0.95": {
+    "assumptions": {
+      "profile": "bsp",
+      "bsp_d": 0.95,
+      "bsp_load_compute": 0.98,
+      "bsp_load_comm": 0.4,
+      "cooling": "liquid",
+      "pue_boundary": "ac",
+      "rack_it_kw": 100.0,
+      "hours_per_year": 8760.0,
+      "price_eur_per_kwh": 0.15,
+      "eff_source": "threshold"
+    },
+    "cooling_cop_range": [
+      4.5,
+      6.0
+    ],
+    "tiers": {
+      "gold": {
+        "profile_weighted_efficiency": 0.9022,
+        "p_in_kw": 110.835,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 10.835,
+        "cooling_kw_range": [
+          18.472,
+          24.63
+        ],
+        "total_facility_kw_range": [
+          129.307,
+          135.465
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 110.835
+      },
+      "titanium": {
+        "profile_weighted_efficiency": 0.9128,
+        "p_in_kw": 109.549,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 9.549,
+        "cooling_kw_range": [
+          18.258,
+          24.344
+        ],
+        "total_facility_kw_range": [
+          127.807,
+          133.893
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 109.549
+      },
+      "ruby": {
+        "profile_weighted_efficiency": 0.9226,
+        "p_in_kw": 108.393,
+        "p_out_kw": 100.0,
+        "p_loss_kw": 8.393,
+        "cooling_kw_range": [
+          18.065,
+          24.087
+        ],
+        "total_facility_kw_range": [
+          126.458,
+          132.48
+        ],
+        "pue_nominal_range": [
+          1.1667,
+          1.2222
+        ],
+        "pue_it_power_basis_kw": 108.393
+      }
+    },
+    "savings_vs_gold": {
+      "titanium": {
+        "psu_heat_reduction_kw": 1.286,
+        "cooling_reduction_kw_range": [
+          0.214,
+          0.286
+        ],
+        "total_power_saving_kw_range": [
+          1.5,
+          1.572
+        ],
+        "annual_energy_saving_mwh_range": [
+          13.14,
+          13.77
+        ],
+        "annual_cost_saving_eur_range": [
+          1971.0,
+          2066.0
+        ]
+      },
+      "ruby": {
+        "psu_heat_reduction_kw": 2.442,
+        "cooling_reduction_kw_range": [
+          0.407,
+          0.543
+        ],
+        "total_power_saving_kw_range": [
+          2.849,
+          2.985
+        ],
+        "annual_energy_saving_mwh_range": [
+          24.96,
+          26.15
+        ],
+        "annual_cost_saving_eur_range": [
+          3744.0,
+          3922.0
+        ]
+      }
+    },
+    "pue_blind_spot_note": "Under the AC measurement boundary, PSU loss sits in the IT-power denominator, so improving PSU efficiency can leave nominal PUE flat or even raise it while true facility energy falls. Report both nominal and DC-boundary PUE."
+  }
+}
