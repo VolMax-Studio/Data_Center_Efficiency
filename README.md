@@ -95,20 +95,5 @@ python make_figs.py
 2. **Measurement Boundary Dependency:** The PUE loophole is purely an artifact of measuring IT power at the AC input. If the operator measures IT power at the DC output of the PSU (direct chip consumption), the PSU loss moves to the numerator, and the loophole disappears (PUE drop is correctly displayed).
 3. **Constant COP Assumption:** The cooling system's COP is modeled as a static range. In real facilities, COP fluctuates dynamically with external ambient temperature, load-step transients, and cooling fluid flow rates.
 
----
 
-## 📚 Citation
-
-If you use this audit framework or verification findings in your data center reviews, please cite it as:
-
-```bibtex
-@misc{nestorov_dc_efficiency_2026,
-  author       = {Nestorov, Ivan},
-  title        = {PUE Loophole Audit: True TCO \& Efficiency-Tier Savings in AI Data Centers},
-  month        = jun,
-  year         = 2026,
-  publisher    = {GitHub},
-  howpublished = {\url{https://github.com/VolMax-Studio/Data_Center_Efficiency}}
-}
-```
 
