@@ -32,7 +32,8 @@ import numpy as np
 # PSU efficiency by load. Two sources, never mixed:
 #   THRESHOLDS = 80 PLUS certification minima (230V internal redundant).
 #     -> using these yields a CONSERVATIVE LOWER BOUND on tier savings.
-#   REAL_CURVES = actual per-model CLEAResult test reports (fill in if used).
+#   ESTIMATED_CURVES = representative tier-typical values pending extraction 
+#     of actual verification-report test points. Do NOT cite as measured.
 # Load fractions: 0.05, 0.10, 0.20, 0.50, 1.00
 # --------------------------------------------------------------------------- #
 LOAD_POINTS = np.array([0.05, 0.10, 0.20, 0.50, 1.00])
@@ -47,11 +48,22 @@ THRESHOLDS = {
 }
 RUBY_UNVERIFIED = True  # flips off only when you've confirmed against the official spec
 
-# Real measured curves per specific model (preferred for a "measured" claim).
-# LEFT EMPTY: Pending stage-by-stage verification of official CLEAResult PDF reports.
-# When empty, the script runs in certification threshold mode.
-REAL_CURVES: dict[str, dict] = {}
-
+# ESTIMATED / TYPICAL efficiency curves — NOT measured per-model CLEAResult reports.
+# These are representative tier-typical values pending extraction of actual
+# verification-report test points. Do NOT cite as measured.
+ESTIMATED_CURVES: dict[str, dict] = {
+    "gold": {
+        "model": "Gold tier-typical (NOT a measured report)",
+        # 10% and 5% are filled conservatively
+        "eff": np.array([0.82, 0.885, 0.924, 0.942, 0.908])
+    },
+    "titanium": {
+        "model": "Titanium tier-typical (NOT a measured report)",
+        # 5% is filled conservatively
+        "eff": np.array([0.88, 0.9205, 0.9504, 0.9620, 0.9457])
+    }
+    # Ruby stays out until a real Ruby-certified report exists
+}
 
 
 # --------------------------------------------------------------------------- #
@@ -74,7 +86,7 @@ class Assumptions:
     rack_it_kw: float            # delivered DC power to IT load at the rack
     hours_per_year: float
     price_eur_per_kwh: float
-    eff_source: str              # "threshold" (lower bound) or "real_curve"
+    eff_source: str              # "threshold" (lower bound) or "estimated"
 
 
 def interpolate_efficiency(load: float, tier: str, source: str) -> float:
@@ -82,9 +94,10 @@ def interpolate_efficiency(load: float, tier: str, source: str) -> float:
     Interpolate efficiency for a given load fraction using 1D linear interpolation.
     Points below 5% or above 100% are clipped to the boundaries.
     """
-    if source == "real_curve":
-        eff_vals = REAL_CURVES[tier]["eff"].copy()
+    if source == "estimated" and tier in ESTIMATED_CURVES:
+        eff_vals = ESTIMATED_CURVES[tier]["eff"].copy()
     else:
+        # Fallback to thresholds if no estimated curve is defined (e.g. Ruby)
         eff_vals = THRESHOLDS[tier].copy()
         
     # Handle NaNs (e.g. 5% or 10% load not defined in Gold thresholds)
@@ -100,6 +113,7 @@ def interpolate_efficiency(load: float, tier: str, source: str) -> float:
     load_clipped = np.clip(load, 0.05, 1.0)
     
     return float(np.interp(load_clipped, LOAD_POINTS, eff_vals))
+
 
 
 def calculate_weighted_efficiency(a: Assumptions, tier: str) -> float:
@@ -223,7 +237,7 @@ def main():
     ap.add_argument("--rack-it-kw", type=float, default=100.0, help="DC power delivered to IT load")
     ap.add_argument("--hours", type=float, default=8760.0)
     ap.add_argument("--price", type=float, default=0.15, help="EUR/kWh")
-    ap.add_argument("--eff-source", choices=["threshold", "real_curve"], default="threshold")
+    ap.add_argument("--eff-source", choices=["threshold", "estimated"], default="threshold")
     ap.add_argument("--out", default="results/audit_metrics.json")
     args = ap.parse_args()
 
@@ -236,7 +250,8 @@ def main():
         print("  [note] using CERTIFICATION THRESHOLDS -> results are a CONSERVATIVE "
               "LOWER BOUND on tier savings, not measured per-model values.\n")
     else:
-        print("  [note] using REAL TEST REPORT CURVES from CLEAResult database.\n")
+        print("  [note] using REPRESENTATIVE ESTIMATED CURVES (tier-typical, not measured reports).\n")
+
 
     # Run sensitivity analysis over d if bsp is selected
     if args.profile == "bsp":

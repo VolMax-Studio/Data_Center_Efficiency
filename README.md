@@ -33,7 +33,12 @@ Marketing sheets claim peak efficiencies of 96% to 97.5%. However, real servers 
 ---
 
 ### 3. Quantitative Savings & Sensitivity Audit (Stage 4 Verdict)
+
+> [!NOTE]
+> **Data note:** PSU efficiency values in this model are tier-typical estimates (based on certification thresholds), not measured test points from specific CLEAResult verification reports. Findings are therefore methodology demonstrations with conservative bounds, not per-model measured audits. Measured per-model curves are pending extraction.
+
 For a single **100 kW IT rack** running under a liquid-cooled environment ($COP = 4.5\text{--}6.0$, mean $COP = 5.25$) at a utility rate of **$0.15\text{ EUR/kWh}$**:
+
 
 #### A. Gold $\rightarrow$ Titanium Upgrade
 * **Energy Savings:** Saves **1.58 to 1.66 kW** of total facility power, translating to **13.9 to 14.5 MWh/year** of saved energy.
